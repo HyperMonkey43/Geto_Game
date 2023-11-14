@@ -13,6 +13,7 @@ class Player(entity.Entity):
     isRunning = True
     isAttacking1 = False
     isAttacking2 = False
+    isDashing = False
     
     
     attackType = 0
@@ -56,7 +57,10 @@ class Player(entity.Entity):
             if keys[pygame.K_SPACE] or keys[pygame.K_w]:
                 self.isJumping = True  
 
-        if time.time() - self.attackCoolDown > 0.1:
+            if keys[pygame.K_LSHIFT]:
+                self.isDashing = True
+            
+        if time.time() - self.attackCoolDown > 0.15:
             if pygame.mouse.get_pressed()[0] or keys[pygame.K_e]:
                 self.isAttacking1 = True 
                 self.setAttackRect()
@@ -180,7 +184,10 @@ class Player(entity.Entity):
 
         elif self.animationType == 3: # run   
             self.currentRunSprite = self.createAnimations(self.currentRunSprite, self.runSprites, 0.2, 0)
-
+            
+        elif self.animationType == 6: # run   
+            self.currentDashSprite = self.createAnimations(self.currentDashSprite, self.runSprites, 0.2, 0)
+            
     def checkAttackType(self):
         if self.isAttacking1:
             self.attackType = 1

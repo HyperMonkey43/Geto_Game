@@ -88,7 +88,7 @@ def draw():
    
     # game.drawMultiple(goblins, (174, 150))
     game.drawMultiple(skeletons, (180, 150))
-    # game.drawMultiple(mushrooms, (192, 150))
+    game.drawMultiple(mushrooms, (192, 150))
     game.drawMultiple(flying_eyes, (171, 189))
     # game.drawMultiple(mushroom_projectiles, (21, 21))
     # game.drawMultiple(bombs, (0, 0))
